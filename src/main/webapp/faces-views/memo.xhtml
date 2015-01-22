@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Memo Printer</title>
+</h:head>
+<h:body>
+    <h3>Memo Printer</h3>
+    <p:dataGrid var="memo" value="#{memoBean.readRecords()}" columns="3" layout="grid" rows="10">
+        <h:panelGrid>
+            <p:row><h:outputText value="#{memo.wordPl}"/></p:row>
+            <p:row><h:outputText value="#{memo.wordJap}"/></p:row>
+            <p:row><h:outputText value="#{memo.kanji}"/></p:row>
+        </h:panelGrid>
+    </p:dataGrid>
+</h:body>
+</html>
