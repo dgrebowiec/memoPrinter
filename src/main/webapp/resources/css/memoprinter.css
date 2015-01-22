@@ -1,0 +1,21 @@
+.ui-widget-content {
+    background: #ffffff;
+    border: none;
+    text-align: center;
+}
+
+.ui-datagrid-column {
+    height: 150px;
+    border: 1px solid;
+}
+
+.ui-datagrid-column table {
+    text-align: center;
+    width: 100%;
+    height: 130px;
+    line-height: 30px;
+}
+
+.kanji {
+    font-size: 40px;
+}

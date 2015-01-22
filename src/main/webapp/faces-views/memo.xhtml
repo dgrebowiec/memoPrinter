@@ -7,16 +7,33 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Memo Printer</title>
+
 </h:head>
 <h:body>
+    <f:facet name="last">
+        <h:outputStylesheet library="css" name="memoprinter.css"/>
+    </f:facet>
+
     <h3>Memo Printer</h3>
-    <p:dataGrid var="memo" value="#{memoBean.readRecords()}" columns="3" layout="grid" rows="10">
-        <h:panelGrid>
-            <p:row><h:outputText value="#{memo.wordPl}"/></p:row>
-            <p:row><h:outputText value="#{memo.wordJap}"/></p:row>
-            <p:row><h:outputText value="#{memo.kanji}"/></p:row>
-        </h:panelGrid>
-    </p:dataGrid>
+
+    <h:form>
+        <h:commandLink>
+            <h:commandButton value="pdf"/>
+            <p:dataExporter type="pdf" target="memoFront" fileName="memos"/>
+        </h:commandLink>
+
+        <p:dataGrid id="memoFront" var="memoFront" value="#{memoBean.readRecords()}" columns="4" layout="grid" rows="10">
+            <h:panelGrid>
+                <p:row><h:outputText value="#{memoFront.wordPl}"/></p:row>
+            </h:panelGrid>
+        </p:dataGrid>
+
+        <p:dataGrid var="memoBack" value="#{memoBean.readRecords()}" columns="4" layout="grid" rows="10">
+            <h:panelGrid style="background: #fff">
+                <p:row><h:outputText value="#{memoBack.kanji}" styleClass="kanji"/></p:row>
+                <p:row><h:outputText value="#{memoBack.wordJap}"/></p:row>
+            </h:panelGrid>
+        </p:dataGrid>
+    </h:form>
 </h:body>
 </html>
