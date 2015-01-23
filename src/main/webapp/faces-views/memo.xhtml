@@ -22,13 +22,13 @@
             <p:dataExporter type="pdf" target="memoFront" fileName="memos"/>
         </h:commandLink>
 
-        <p:dataGrid id="memoFront" var="memoFront" value="#{memoBean.readRecords()}" columns="4" layout="grid" rows="10">
+        <p:dataGrid id="memoFront" var="memoFront" value="#{memoBean.getTransations()}" columns="4" layout="grid" rows="10">
             <h:panelGrid>
                 <p:row><h:outputText value="#{memoFront.wordPl}"/></p:row>
             </h:panelGrid>
         </p:dataGrid>
 
-        <p:dataGrid var="memoBack" value="#{memoBean.readRecords()}" columns="4" layout="grid" rows="10">
+        <p:dataGrid var="memoBack" value="#{memoBean.memos}" columns="4" layout="grid" rows="10">
             <h:panelGrid style="background: #fff">
                 <p:row><h:outputText value="#{memoBack.kanji}" styleClass="kanji"/></p:row>
                 <p:row><h:outputText value="#{memoBack.wordJap}"/></p:row>
