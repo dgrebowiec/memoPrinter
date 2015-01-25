@@ -19,7 +19,7 @@ public abstract class Table {
 
     protected float margin = 0f;
 
-    protected float y = 700f;
+    protected float y = 800f;
 
     protected float cellMargin = 15f;
 
@@ -48,12 +48,12 @@ public abstract class Table {
         drawContent(content);
     }
 
-    protected void drawLines() throws IOException {
+    private void drawLines() throws IOException {
         drawRows();
         drawCols();
     }
 
-    protected void drawRows() throws IOException {
+    private void drawRows() throws IOException {
         float nexty = y ;
         for (int i = 0; i <= rows; i++) {
             contentStream.drawLine(margin, nexty, margin+width, nexty);
@@ -61,7 +61,7 @@ public abstract class Table {
         }
     }
 
-    protected void drawCols() throws IOException {
+    private void drawCols() throws IOException {
         float nextx = margin;
         for (int i = 0; i <= cols; i++) {
             contentStream.drawLine(nextx, y, nextx, y-height);

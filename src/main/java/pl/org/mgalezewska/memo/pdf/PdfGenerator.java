@@ -26,9 +26,9 @@ public class PdfGenerator {
             document.addPage(page);
 
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
-            contentStream.setFont( PDType1Font.HELVETICA_BOLD, 12 );
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
 
-            Table table = new FrontTable(page, contentStream, 10, 3);
+            Table table = new FrontTable(page, contentStream, 5, 3);
             table.drawTable(memos);
             contentStream.close();
 

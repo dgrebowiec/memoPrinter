@@ -3,6 +3,7 @@ package pl.org.mgalezewska.memo.pdf;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import pl.org.mgalezewska.memo.bo.MemoBO;
+import pl.org.mgalezewska.memo.utils.TextUtils;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -22,11 +23,11 @@ public class FrontTable extends Table {
     @Override
     void drawContent(List<MemoBO> content) throws IOException {
         float textx = 0f;
-        float texty = y - (rowHeight/2 + 6);
+        float texty = y - (rowHeight/2);
 
         int cell = cols;
         for (MemoBO memo : content) {
-            float stringWidth = getWidthInPixels(memo.getWordPl());
+            float stringWidth = TextUtils.getWidthInPixels(memo.getWordPl());
             textx += (colWidth /2) - (stringWidth / 2);
             contentStream.beginText();
             contentStream.moveTextPositionByAmount(textx, texty);
@@ -43,21 +44,5 @@ public class FrontTable extends Table {
             }
         }
 
-    }
-
-    private float getWidthInPixels(String text) {
-        Font font = new Font("Helvetica", Font.BOLD, 12);
-        FontMetrics metrics = new FontMetrics(font) {
-        };
-        Rectangle2D bounds = metrics.getStringBounds(text, null);
-        return (float)bounds.getWidth();
-    }
-
-    private float getHeightInPixels(String text) {
-        Font font = new Font("Helvetica", Font.BOLD, 12);
-        FontMetrics metrics = new FontMetrics(font) {
-        };
-        Rectangle2D bounds = metrics.getStringBounds(text, null);
-        return (float)bounds.getHeight();
     }
 }
