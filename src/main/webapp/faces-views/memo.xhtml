@@ -17,11 +17,6 @@
     <h3>Memo Printer</h3>
 
     <h:form>
-        <h:commandLink>
-            <h:commandButton value="pdf"/>
-            <p:dataExporter type="pdf" target="memoFront" fileName="memos"/>
-        </h:commandLink>
-
         <p:dataGrid id="memoFront" var="memoFront" value="#{memoBean.getTransations()}" columns="4" layout="grid" rows="10">
             <h:panelGrid>
                 <p:row><h:outputText value="#{memoFront.wordPl}"/></p:row>
