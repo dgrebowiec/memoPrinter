@@ -27,13 +27,7 @@ public class FrontTable extends Table {
 
         int cell = cols;
         for (MemoBO memo : content) {
-            float stringWidth = TextUtils.getWidthInPixels(memo.getWordPl());
-            textx += (colWidth /2) - (stringWidth / 2);
-            contentStream.beginText();
-            contentStream.moveTextPositionByAmount(textx, texty);
-            contentStream.drawString(memo.getWordPl());
-            contentStream.endText();
-            textx -= (colWidth /2) - (stringWidth / 2);
+            drawWord(memo, textx, texty);
             --cell;
             if (cell != 0) {
                 textx += colWidth;
@@ -43,6 +37,14 @@ public class FrontTable extends Table {
                 cell = 3;
             }
         }
+    }
 
+    private void drawWord(MemoBO memo, float x, float y) throws IOException {
+        float stringWidth = TextUtils.getWidthInPixels(memo.getWordJap());
+        x += (colWidth /2) - (stringWidth / 2);
+        contentStream.beginText();
+        contentStream.moveTextPositionByAmount(x, y);
+        contentStream.drawString(memo.getWordJap());
+        contentStream.endText();
     }
 }

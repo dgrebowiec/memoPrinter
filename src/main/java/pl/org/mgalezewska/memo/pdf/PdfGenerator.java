@@ -27,10 +27,18 @@ public class PdfGenerator {
 
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
             contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-
-            Table table = new FrontTable(page, contentStream, 5, 3);
-            table.drawTable(memos);
+            Table frontTable = new FrontTable(page, contentStream, 5, 3);
+            frontTable.drawTable(memos);
             contentStream.close();
+
+            PDPage page2 = new PDPage();
+            document.addPage(page2);
+
+            PDPageContentStream contentStream2 = new PDPageContentStream(document, page2);
+            contentStream2.setFont(PDType1Font.HELVETICA_BOLD, 16);
+            Table backTable = new BackTable(page2, contentStream2, 5, 3);
+            backTable.drawTable(memos);
+            contentStream2.close();
 
         }
         document.save("test.pdf");
@@ -42,12 +50,15 @@ public class PdfGenerator {
         List<MemoBO> memoBOs2 = Lists.newArrayList();
         MemoBO memoBO = new MemoBO();
         memoBO.setWordPl("test");
+        memoBO.setWordJap("neko");
 
         MemoBO memoBO2 = new MemoBO();
         memoBO2.setWordPl("dlugi test");
+        memoBO2.setWordJap("neko");
 
         MemoBO memoBO3 = new MemoBO();
         memoBO3.setWordPl("test");
+        memoBO3.setWordJap("neko");
 
         memoBOs.add(memoBO);
         memoBOs.add(memoBO2);
