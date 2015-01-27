@@ -17,10 +17,9 @@ import java.util.List;
  */
 public class PdfGenerator {
 
-    public void generatePdf(List<List<MemoBO>> memosList) throws IOException, COSVisitorException {
+    public void generateFrontPdf(List<List<MemoBO>> memosList) throws IOException, COSVisitorException {
 
         PDDocument document = new PDDocument();
-
         for (List<MemoBO> memos : memosList) {
             PDPage page = new PDPage();
             document.addPage(page);
@@ -30,7 +29,14 @@ public class PdfGenerator {
             Table frontTable = new FrontTable(page, contentStream, 5, 3);
             frontTable.drawTable(memos);
             contentStream.close();
+        }
+        document.save("front.pdf");
+    }
 
+    public void generateBackPdf(List<List<MemoBO>> memosList) throws IOException, COSVisitorException {
+
+        PDDocument document = new PDDocument();
+        for (List<MemoBO> memos : memosList) {
             PDPage page2 = new PDPage();
             document.addPage(page2);
 
@@ -39,35 +45,7 @@ public class PdfGenerator {
             Table backTable = new BackTable(page2, contentStream2, 5, 3);
             backTable.drawTable(memos);
             contentStream2.close();
-
         }
-        document.save("test.pdf");
-    }
-
-    public static void main(String... args) throws IOException, COSVisitorException {
-        List<List<MemoBO>> memos = Lists.newArrayList();
-        List<MemoBO> memoBOs = Lists.newArrayList();
-        List<MemoBO> memoBOs2 = Lists.newArrayList();
-        MemoBO memoBO = new MemoBO();
-        memoBO.setWordPl("test");
-        memoBO.setWordJap("neko");
-
-        MemoBO memoBO2 = new MemoBO();
-        memoBO2.setWordPl("dlugi test");
-        memoBO2.setWordJap("neko");
-
-        MemoBO memoBO3 = new MemoBO();
-        memoBO3.setWordPl("test");
-        memoBO3.setWordJap("neko");
-
-        memoBOs.add(memoBO);
-        memoBOs.add(memoBO2);
-        memoBOs.add(memoBO3);
-        memoBOs2.add(memoBO);
-        memos.add(memoBOs);
-        //memos.add(memoBOs2);
-
-        PdfGenerator generator = new PdfGenerator();
-        generator.generatePdf(memos);
+        document.save("back.pdf");
     }
 }

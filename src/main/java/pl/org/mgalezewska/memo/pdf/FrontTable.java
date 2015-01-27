@@ -32,8 +32,8 @@ public class FrontTable extends Table {
             if (cell != 0) {
                 textx += colWidth;
             } else {
-                texty-=rowHeight;
-                textx = margin + cellMargin;
+                texty -= rowHeight;
+                textx = 0f;
                 cell = 3;
             }
         }

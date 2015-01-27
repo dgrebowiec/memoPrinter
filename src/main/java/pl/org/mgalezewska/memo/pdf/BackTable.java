@@ -34,10 +34,10 @@ public class BackTable extends Table {
     @Override
     void drawContent(List<MemoBO> content) throws IOException {
 
-        float translationX = 0f;
-        float translationY = y - (rowHeight/2);
-        float kanjiX = 0f;
-        float kanjiY = 0f;
+        float translationX = colWidth * 3;
+        float translationY = y - (rowHeight/2) - 10;
+        float kanjiX = colWidth * 3;
+        float kanjiY = y - 35;
 
         int cell = cols;
         for (MemoBO memo : content) {
@@ -46,27 +46,33 @@ public class BackTable extends Table {
 
             --cell;
             if (cell != 0) {
-                translationX += colWidth;
+                translationX -= colWidth;
+                kanjiX -= colWidth;
             } else {
-                translationY-=rowHeight;
-                translationX = margin + cellMargin;
+                translationY -= rowHeight;
+                translationX = colWidth * 3;
+                kanjiY -= rowHeight;
+                kanjiX = colWidth * 3;
                 cell = 3;
             }
-
         }
     }
 
     private void drawTranslation(MemoBO memo, float x, float y) throws IOException {
         float stringWidth = TextUtils.getWidthInPixels(memo.getWordPl());
-        x += (colWidth /2) - (stringWidth / 2);
+        x -= (colWidth /2) + (stringWidth / 2);
         contentStream.beginText();
         contentStream.moveTextPositionByAmount(x, y);
         contentStream.drawString(memo.getWordPl());
         contentStream.endText();
-        //x -= (colWidth /2) - (stringWidth / 2);
     }
 
-    private void drawKanji(MemoBO memo, float x, float y) {
-
+    private void drawKanji(MemoBO memo, float x, float y) throws IOException {
+        float stringWidth = TextUtils.getWidthInPixels(memo.getWordPl());
+        x -= stringWidth + 15;
+        contentStream.beginText();
+        contentStream.moveTextPositionByAmount(x, y);
+        contentStream.drawString(memo.getWordPl());
+        contentStream.endText();
     }
 }
