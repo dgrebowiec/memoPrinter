@@ -16,6 +16,7 @@ package pl.org.mgalezewska.memo.pdf;
 
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 import pl.org.mgalezewska.memo.utils.TextUtils;
 
@@ -68,11 +69,13 @@ public class BackTable extends Table {
     }
 
     private void drawKanji(MemoBO memo, float x, float y) throws IOException {
-        float stringWidth = TextUtils.getWidthInPixels(memo.getWordPl());
+
+        if (memo.getKanji() == null) return;
+        float stringWidth = TextUtils.getWidthInPixels(memo.getKanji());
         x -= stringWidth + 15;
         contentStream.beginText();
         contentStream.moveTextPositionByAmount(x, y);
-        contentStream.drawString(memo.getWordPl());
+        contentStream.drawString(memo.getKanji());
         contentStream.endText();
     }
 }

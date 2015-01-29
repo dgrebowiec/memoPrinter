@@ -44,6 +44,7 @@ public class PdfGeneratorTest {
         MemoBO memoBO3 = new MemoBO();
         memoBO3.setWordPl("test3");
         memoBO3.setWordJap("neko3");
+        memoBO3.setKanji("無言");
 
         MemoBO memoBO4 = new MemoBO();
         memoBO4.setWordPl("test4");
