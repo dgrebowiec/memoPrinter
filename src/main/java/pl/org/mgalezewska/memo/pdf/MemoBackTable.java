@@ -14,12 +14,16 @@
  */
 package pl.org.mgalezewska.memo.pdf;
 
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -28,7 +32,7 @@ import java.util.List;
 public class MemoBackTable implements Table {
 
     @Override
-    public PdfPTable generateTable(List<MemoBO> memos) {
+    public PdfPTable generateTable(List<MemoBO> memos) throws IOException, DocumentException {
         PdfPTable table = new PdfPTable(3);
         table.setWidthPercentage(100f);
 
@@ -40,11 +44,13 @@ public class MemoBackTable implements Table {
         return table;
     }
 
-    private PdfPTable generateNestedTable(MemoBO memo) {
+    private PdfPTable generateNestedTable(MemoBO memo) throws IOException, DocumentException {
         PdfPTable table = new PdfPTable(1);
         table.setWidthPercentage(100f);
 
-        PdfPCell cell = new PdfPCell(new Phrase(memo.getKanji()));
+        BaseFont baseFont = BaseFont.createFont("HeiseiKakuGo-W5", "UniJIS-UCS2-H", BaseFont.EMBEDDED);
+        Font font = new Font(baseFont, 14);
+        PdfPCell cell = new PdfPCell(new Phrase(memo.getKanji(), font));
         cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell.setVerticalAlignment(Element.ALIGN_RIGHT);
         cell.setBorder(PdfPCell.NO_BORDER);

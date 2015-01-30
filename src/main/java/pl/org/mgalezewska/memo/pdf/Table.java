@@ -14,9 +14,11 @@
  */
 package pl.org.mgalezewska.memo.pdf;
 
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,6 +26,6 @@ import java.util.List;
  */
 public interface Table {
 
-    PdfPTable generateTable(List<MemoBO> memos);
+    PdfPTable generateTable(List<MemoBO> memos) throws IOException, DocumentException;
 
 }

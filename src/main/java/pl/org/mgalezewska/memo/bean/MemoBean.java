@@ -1,6 +1,7 @@
 package pl.org.mgalezewska.memo.bean;
 
 import com.google.common.collect.Lists;
+import com.itextpdf.text.DocumentException;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.primefaces.model.StreamedContent;
@@ -32,7 +33,7 @@ public class MemoBean {
 
     private List<MemoBO> memos = Lists.newArrayList();
 
-    public void upload() throws IOException, COSVisitorException {
+    public void upload() throws IOException, DocumentException {
         if(file != null) {
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -44,16 +45,14 @@ public class MemoBean {
         }
     }
 
-    public void generateFrontPdf() throws IOException, COSVisitorException {
+    public void generateFrontPdf() throws IOException, DocumentException {
         PdfGenerator generator = new PdfGenerator();
-        List<List<MemoBO>> pages = getPages(15);
-        generator.generateFrontPdf(pages);
+        generator.generateFrontPdf(memos);
     }
 
-    public void generateBackPdf() throws IOException, COSVisitorException {
+    public void generateBackPdf() throws IOException, DocumentException {
         PdfGenerator generator = new PdfGenerator();
-        List<List<MemoBO>> pages = getPages(15);
-        generator.generateBackPdf(pages);
+        generator.generateBackPdf(memos);
     }
 
     public List<MemoBO> getTransations() {
