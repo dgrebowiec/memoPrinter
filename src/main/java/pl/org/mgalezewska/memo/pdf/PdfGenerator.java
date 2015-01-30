@@ -1,6 +1,9 @@
 package pl.org.mgalezewska.memo.pdf;
 
-import com.google.common.collect.Lists;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -8,6 +11,7 @@ import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,35 +21,27 @@ import java.util.List;
  */
 public class PdfGenerator {
 
-    public void generateFrontPdf(List<List<MemoBO>> memosList) throws IOException, COSVisitorException {
+    public void generateFrontPdf(List<MemoBO> memos) throws IOException, DocumentException {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("front.pdf"));
+        document.open();
 
-        PDDocument document = new PDDocument();
-        for (List<MemoBO> memos : memosList) {
-            PDPage page = new PDPage();
-            document.addPage(page);
+        MemoFrontTable frontTable = new MemoFrontTable();
+        PdfPTable table = frontTable.generateTable(memos);
+        document.add(table);
 
-            PDPageContentStream contentStream = new PDPageContentStream(document, page);
-            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-            Table frontTable = new FrontTable(page, contentStream, 5, 3);
-            frontTable.drawTable(memos);
-            contentStream.close();
-        }
-        document.save("front.pdf");
+        document.close();
     }
 
-    public void generateBackPdf(List<List<MemoBO>> memosList) throws IOException, COSVisitorException {
+    public void generateBackPdf(List<MemoBO> memos) throws IOException, DocumentException {
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("back.pdf"));
+        document.open();
 
-        PDDocument document = new PDDocument();
-        for (List<MemoBO> memos : memosList) {
-            PDPage page2 = new PDPage();
-            document.addPage(page2);
+        MemoBackTable backTable = new MemoBackTable();
+        PdfPTable table = backTable.generateTable(memos);
+        document.add(table);
 
-            PDPageContentStream contentStream2 = new PDPageContentStream(document, page2);
-            contentStream2.setFont(PDType1Font.HELVETICA_BOLD, 16);
-            Table backTable = new BackTable(page2, contentStream2, 5, 3);
-            backTable.drawTable(memos);
-            contentStream2.close();
-        }
-        document.save("back.pdf");
+        document.close();
     }
 }
