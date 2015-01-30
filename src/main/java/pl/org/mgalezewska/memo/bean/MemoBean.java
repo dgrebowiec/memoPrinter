@@ -55,25 +55,19 @@ public class MemoBean {
         generator.generateBackPdf(memos);
     }
 
-    public List<MemoBO> getTransations() {
-        List<MemoBO> reverses = Lists.newArrayList();
-        reverses.addAll(memos);
-        Collections.reverse(reverses);
-        return reverses;
-    }
-
     private void readRecords() {
         CSVReader reader = new CSVReader();
         memos = reader.read(fileManager.getPath());
     }
 
-    private List<List<MemoBO>> getPages(int size) {
-        List pages = Lists.newArrayList();
-        final int count = memos.size();
-        for (int i = 0; i < count; i += size) {
-            pages.add(memos.subList(i, Math.min(count, i + size)));
+    private List<MemoBO> transformOrder() {
+        List<MemoBO> reversed = Lists.newArrayList();
+        for (int i = 0; i < Math.floor(memos.size() / 3); i += 3) {
+            List<MemoBO> sublist = memos.subList(i, i + 2);
+            Collections.reverse(sublist);
+            reversed.addAll(reversed);
         }
-        return pages;
+        return reversed;
     }
 
     public UploadedFile getFile() {
