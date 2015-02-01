@@ -60,16 +60,6 @@ public class MemoBean {
         memos = reader.read(fileManager.getPath());
     }
 
-    private List<MemoBO> transformOrder() {
-        List<MemoBO> reversed = Lists.newArrayList();
-        for (int i = 0; i < Math.floor(memos.size() / 3); i += 3) {
-            List<MemoBO> sublist = memos.subList(i, i + 2);
-            Collections.reverse(sublist);
-            reversed.addAll(reversed);
-        }
-        return reversed;
-    }
-
     public UploadedFile getFile() {
         return file;
     }
