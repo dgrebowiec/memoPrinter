@@ -19,6 +19,7 @@ import com.itextpdf.text.DocumentException;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.junit.Test;
 import pl.org.mgalezewska.memo.bo.MemoBO;
+import pl.org.mgalezewska.memo.pdf.JapMemoPdf;
 import pl.org.mgalezewska.memo.pdf.PdfGenerator;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.util.List;
 /**
  * @author Małgorzata Gałężewska <mgalezewska@opi.org.pl>
  */
-public class PdfGeneratorTest {
+public class PdfGenerator2Test {
 
     @Test
     public void generatePdfTest() throws IOException, COSVisitorException, DocumentException {
@@ -59,8 +60,8 @@ public class PdfGeneratorTest {
         memoBOs.add(memoBO4);
         memoBOs2.add(memoBO);
 
-        PdfGenerator generator = new PdfGenerator();
-        generator.generateFrontPdf(memoBOs);
-        generator.generateBackPdf(memoBOs);
+        PdfGenerator generator = new JapMemoPdf(memoBOs);
+        generator.generateFrontPdf();
+        generator.generateBackPdf();
     }
 }

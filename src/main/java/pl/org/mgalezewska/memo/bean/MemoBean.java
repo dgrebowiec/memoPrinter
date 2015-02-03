@@ -2,13 +2,11 @@ package pl.org.mgalezewska.memo.bean;
 
 import com.google.common.collect.Lists;
 import com.itextpdf.text.DocumentException;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.pdfbox.exceptions.COSVisitorException;
-import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 import pl.org.mgalezewska.memo.commons.FileManager;
 import pl.org.mgalezewska.memo.csv.CSVReader;
+import pl.org.mgalezewska.memo.pdf.JapMemoPdf;
 import pl.org.mgalezewska.memo.pdf.PdfGenerator;
 
 import javax.faces.application.FacesMessage;
@@ -16,7 +14,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,7 +31,7 @@ public class MemoBean {
     private List<MemoBO> memos = Lists.newArrayList();
 
     public void upload() throws IOException, DocumentException {
-        if(file != null) {
+        if (file != null) {
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
 
@@ -46,13 +43,13 @@ public class MemoBean {
     }
 
     public void generateFrontPdf() throws IOException, DocumentException {
-        PdfGenerator generator = new PdfGenerator();
-        generator.generateFrontPdf(memos);
+        PdfGenerator generator = new JapMemoPdf(memos);
+        generator.generateFrontPdf();
     }
 
     public void generateBackPdf() throws IOException, DocumentException {
-        PdfGenerator generator = new PdfGenerator();
-        generator.generateBackPdf(memos);
+        PdfGenerator generator = new JapMemoPdf(memos);
+        generator.generateBackPdf();
     }
 
     private void readRecords() {
