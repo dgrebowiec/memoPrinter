@@ -1,6 +1,8 @@
 package pl.org.mgalezewska.memo.pdf;
 
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,8 +13,8 @@ import java.io.IOException;
  */
 public interface PdfGenerator {
 
-    public void generateFrontPdf() throws IOException, DocumentException;
+    public PdfPTable generateFrontPdf() throws IOException, DocumentException;
 
-    public void generateBackPdf() throws IOException, DocumentException;
+    public PdfPTable generateBackPdf() throws IOException, DocumentException;
 
 }

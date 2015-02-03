@@ -26,31 +26,16 @@ public class JapMemoPdf implements PdfGenerator{
     }
 
     @Override
-    public void generateFrontPdf() throws IOException, DocumentException {
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("front.pdf"));
-        document.open();
-
+    public PdfPTable generateFrontPdf() throws IOException, DocumentException {
         Table frontTable = new MemoFrontTable();
-        PdfPTable table = frontTable.generateTable(memos);
-        document.add(table);
-
-        document.close();
+        return frontTable.generateTable(memos);
     }
 
     @Override
-    public void generateBackPdf() throws IOException, DocumentException {
-
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("back.pdf"));
-        document.open();
-
+    public PdfPTable generateBackPdf() throws IOException, DocumentException {
         Table backTable = new MemoBackTable();
         List<MemoBO> transformed = transformOrder(memos);
-        PdfPTable table = backTable.generateTable(transformed);
-        document.add(table);
-
-        document.close();
+        return backTable.generateTable(transformed);
     }
 
     private List<MemoBO> transformOrder(List<MemoBO> memos) {
