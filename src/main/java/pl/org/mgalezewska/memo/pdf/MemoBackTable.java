@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * @author Małgorzata Gałężewska <mgalezewska@opi.org.pl>
  */
-public class MemoBackTable implements Table {
+public class MemoBackTable implements Table<MemoBO> {
 
     @Override
     public PdfPTable generateTable(List<MemoBO> memos) throws IOException, DocumentException {

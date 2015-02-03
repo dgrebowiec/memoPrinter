@@ -24,8 +24,8 @@ import java.util.List;
 /**
  * @author Małgorzata Gałężewska <mgalezewska@opi.org.pl>
  */
-public interface Table {
+public interface Table<T> {
 
-    PdfPTable generateTable(List<MemoBO> memos) throws IOException, DocumentException;
+    PdfPTable generateTable(List<T> memos) throws IOException, DocumentException;
 
 }

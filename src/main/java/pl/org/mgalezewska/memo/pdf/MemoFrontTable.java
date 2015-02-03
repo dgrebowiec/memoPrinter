@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * @author Małgorzata Gałężewska <mgalezewska@opi.org.pl>
  */
-public class MemoFrontTable implements Table {
+public class MemoFrontTable implements Table<MemoBO> {
 
     @Override
     public PdfPTable generateTable(List<MemoBO> memos) {
