@@ -63,6 +63,7 @@ public class PdfGeneratorTest {
         memoBOs2.add(memoBO);
 
         PdfGenerator generator = new JapMemoPdf(memoBOs);
+        //List<Pdf> pfs = generator.generatePdfs();
 
         Pdf pdf = new Pdf("front.pdf");
         pdf.open();
@@ -74,6 +75,6 @@ public class PdfGeneratorTest {
         pdfBack.open();
         PdfPTable backTable = generator.generateBackPdf();
         pdfBack.add(backTable);
-        pdf.close();
+        pdf.close()/
     }
 }
