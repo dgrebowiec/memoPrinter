@@ -75,6 +75,6 @@ public class PdfGeneratorTest {
         pdfBack.open();
         PdfPTable backTable = generator.generateBackPdf();
         pdfBack.add(backTable);
-        pdf.close()/
+        pdf.close();
     }
 }
