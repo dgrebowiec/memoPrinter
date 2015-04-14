@@ -1,14 +1,10 @@
 package pl.org.mgalezewska.memo.pdf;
 
 import com.google.common.collect.Lists;
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;

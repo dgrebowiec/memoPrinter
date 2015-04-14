@@ -4,8 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>memoPrinter</groupId>
     <artifactId>pl.org.mgalezewska.memoPrinter</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mp-web</module>
+        <module>mp-persitence</module>
+    </modules>
     <name>memoPrinter</name>
 
     <repositories>

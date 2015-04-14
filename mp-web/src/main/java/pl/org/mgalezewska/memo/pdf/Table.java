@@ -16,7 +16,6 @@ package pl.org.mgalezewska.memo.pdf;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
-import pl.org.mgalezewska.memo.bo.MemoBO;
 
 import java.io.IOException;
 import java.util.List;
