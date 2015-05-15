@@ -17,7 +17,6 @@ package pl.org.mgalezewska.memoPrinter.pdf;
 import com.google.common.collect.Lists;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
-import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.junit.Test;
 import pl.org.mgalezewska.memo.bo.MemoBO;
 import pl.org.mgalezewska.memo.pdf.JapMemoPdf;
@@ -33,7 +32,7 @@ import java.util.List;
 public class PdfGeneratorTest {
 
     @Test
-    public void generatePdfTest() throws IOException, COSVisitorException, DocumentException {
+    public void generatePdfTest() throws IOException, DocumentException {
         List<MemoBO> memoBOs = Lists.newArrayList();
         List<MemoBO> memoBOs2 = Lists.newArrayList();
         MemoBO memoBO = new MemoBO();

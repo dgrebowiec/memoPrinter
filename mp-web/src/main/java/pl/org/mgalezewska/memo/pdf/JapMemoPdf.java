@@ -21,13 +21,11 @@ public class JapMemoPdf implements PdfGenerator{
         this.memos = memos;
     }
 
-    @Override
     public PdfPTable generateFrontPdf() throws IOException, DocumentException {
         Table frontTable = new MemoFrontTable();
         return frontTable.generateTable(memos);
     }
 
-    @Override
     public PdfPTable generateBackPdf() throws IOException, DocumentException {
         Table backTable = new MemoBackTable();
         List<MemoBO> transformed = transformOrder(memos);
