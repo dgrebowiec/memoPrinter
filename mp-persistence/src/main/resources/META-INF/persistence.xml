@@ -12,10 +12,10 @@
             <property name="hibernate.cache.use_second_level_cache" value="false"/>
             <property name="hibernate.cache.use_query_cache" value="false"/>
             <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.20.20.36:1521:bwnpdevel"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
-            <property name="hibernate.connection.username" value="inventorum"/>
-            <property name="hibernate.connection.password" value=""/>
+            <property name="hibernate.connection.username" value="memo"/>
+            <property name="hibernate.connection.password" value="memo"/>
             <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
             <property name="hibernate.generate_statistics" value="true" />
             <property name="hibernate.default_batch_fetch_size" value="100" />

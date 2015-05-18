@@ -10,6 +10,6 @@
         </sql-type>
     </type-mapping>
 
-    <table-filter match-name="PERSON" match-schema="INVENTORUM" exclude="false" />
+    <table-filter match-name=".*" match-schema="MEMO" exclude="false" />
 
 </hibernate-reverse-engineering>

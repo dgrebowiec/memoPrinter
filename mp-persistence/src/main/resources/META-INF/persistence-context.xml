@@ -52,9 +52,9 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@10.20.20.36:1521:bwnpdevel"/>
-        <property name="username" value="inventorum"/>
-        <property name="password" value=""/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="memo"/>
+        <property name="password" value="memo"/>
         <property name="suppressClose" value="true"/>
     </bean>
     <util:properties id="jpaProperties">
