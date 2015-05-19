@@ -1,16 +1,16 @@
 /*
- * To oprogramowanie jest w≥asnoúciπ
+ * To oprogramowanie jest w≈Çasno≈õciƒÖ
  *
- * OPI - Oúrodek Przetwarzania Informacji,
- * Al. Niepodleg≥oúci 188B, 00-608 Warszawa
+ * OPI - O≈õrodek Przetwarzania Informacji,
+ * Al. Niepodleg≈Ço≈õci 188B, 00-608 Warszawa
  * Numer KRS: 0000127372
- * Sπd Rejonowy dla m. st. Warszawy w Warszawie XII Wydzia≥
+ * SƒÖd Rejonowy dla m. st. Warszawy w Warszawie XII Wydzia≈Ç
  * Gospodarczy KRS
  * REGON: 006746090
  * NIP: 525-000-91-40
- * Wszystkie prawa zastrzeøone. To oprogramowanie moøe byÊ uøywane tylko
+ * Wszystkie prawa zastrze≈ºone. To oprogramowanie mo≈ºe byƒá u≈ºywane tylko
  * zgodnie z przeznaczeniem. OPI nie odpowiada za ewentualne wadliwe
- * dzia≥anie kodu.
+ * dzia≈Çanie kodu.
  */
 package pl.org.mgalezewska.memo.persistance;
 
@@ -27,7 +27,7 @@ import java.beans.Introspector;
 import java.util.Map;
 
 /**
- * @author Ma≥gorzata Ga≥Íøewska <mgalezewska@opi.org.pl>
+ * @author Ma≈Çgorzata Ga≈Çƒô≈ºewska <mgalezewska@opi.org.pl>
  */
 @Transactional
 @ContextConfiguration({"classpath:META-INF/persistence-context.xml"})
