@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>memoPrinter</artifactId>
+        <groupId>pl.org.mgalezewska.memoPrinter</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mp-persistence</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>hibernate3-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <components>
+                        <component>
+                            <name>hbm2java</name>
+                            <outputDirectory>/target/generated-sources/hbm2java/</outputDirectory>
+                            <implementation>jdbcconfiguration</implementation>
+                        </component>
+                        <component>
+                            <name>hbm2ddl</name>
+                            <outputDirectory>/target/generated-sources/hbm2ddl/</outputDirectory>
+                            <implementation>jdbcconfiguration</implementation>
+                        </component>
+                    </components>
+                    <componentProperties>
+                        <revengfile>/src/main/resources/hbm2java/hibernate.reveng.xml</revengfile>
+                        <configurationfile>/src/main/resources/hbm2java/hibernate.cfg.xml</configurationfile>
+                        <jdk5>true</jdk5>
+                        <ejb3>true</ejb3>
+                    </componentProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.oracle.ojdbc6</groupId>
+                        <artifactId>com.oracle.ojdbc6</artifactId>
+                        <version>11.2.0.1_0</version>
+                        <scope>system</scope>
+                        <systemPath>
+                            ${user.home}/.m2/repository/com/oracle/ojdbc6/com.oracle.ojdbc6/11.2.0.1_0/com.oracle.ojdbc6-11.2.0.1_0.jar
+                        </systemPath>
+                    </dependency>
+                    <dependency>
+                        <groupId>cglib</groupId>
+                        <artifactId>cglib-nodep</artifactId>
+                        <version>2.2.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>3.6.10.Final</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-entitymanager</artifactId>
+                        <version>3.6.10.Final</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-tools</artifactId>
+                        <version>3.6.0.CR1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                            <goal>test-process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/querydsl</outputDirectory>
+                            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
